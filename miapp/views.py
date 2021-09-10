@@ -6,9 +6,19 @@ from django.shortcuts import render, HttpResponse
 # MVT = Modelo Templates Vistas -> La vista hace acciones (Métodos)
 
 def index(request):
-    return HttpResponse("""
+
+    html = """
         <h1>Inicio</h1>
-    """)
+        <p>Números del 1 al 100</p>
+        <ul>
+    """
+    numero = 1
+    while numero <= 100:
+        html += f"<li>{str(numero)}</li>"
+        numero += 1
+
+    html += "</ul>"
+    return HttpResponse(html)
 
 
 def hola_mundo(request):
