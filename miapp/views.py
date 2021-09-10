@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponse
 
-
 # Create your views here.
 # MVC = Modelo Vista Controlador (El controlador hace acciones)
 # MVT = Modelo Templates Vistas -> La vista hace acciones (Métodos)
@@ -24,7 +23,6 @@ layout = """
 
 
 def index(request):
-
     html = """
         <h1>Inicio</h1>
         <p>Números del 1 al 100</p>
@@ -51,3 +49,7 @@ def pagina(request):
     <h1>Página de mi web</h1>
     <p>Creado por Ontos</p>
     """)
+
+
+def contacto(request, nombre, apellido):
+    return HttpResponse(layout + f"<h2>Contacto {nombre} {apellido}</h2>")
