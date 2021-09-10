@@ -19,7 +19,16 @@ from django.urls import path
 # Importar app con mis vistas
 from miapp import views
 
+"""
+También se podría importar "import miapp.views"
+y después cambiar los links abajo tipo "miapp.views.index" por ejemplo
+para que quede más ordenado cuándo hayan más vistas
+"""
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("hola-mundo/", views.hola_mundo, name="hola_mundo")
+    path("", views.index, name="index"),
+    path("inicio/", views.index, name="inicio"),
+    path("hola-mundo/", views.hola_mundo, name="hola_mundo"),
+    path("pagina-pruebas/", views.pagina, name="pagina")
 ]
