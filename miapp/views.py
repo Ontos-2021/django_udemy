@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 # MVC = Modelo Vista Controlador (El controlador hace acciones)
@@ -16,6 +16,9 @@ layout = """
     </li>
     <li>
         <a href="/pagina-pruebas">Página de pruebas</a>
+    </li>
+    <li>
+        <a href="/contacto-dos">Contacto</a>
     </li>
 </ul>
 <hr/>
@@ -44,7 +47,11 @@ def hola_mundo(request):
     """)
 
 
-def pagina(request):
+def pagina(request, redirigir=0):
+
+    if redirigir == 1:
+        ##return redirect("/contacto/José/Mercado")
+        return redirect("contacto", nombre="José", apellido="Mercado")
     return HttpResponse(layout + """
     <h1>Página de mi web</h1>
     <p>Creado por Ontos</p>
