@@ -49,7 +49,7 @@ def pagina(request, redirigir=0):
     if redirigir == 1:
         ##return redirect("/contacto/José/Mercado")
         return redirect("contacto", nombre="José", apellido="Mercado")
-    
+
     return render(request, "pagina.html")
 
 

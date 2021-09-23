@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        <!-- Acá va el títutlo-->
+        {% endblock %}| Ontos
+    </title>
+</head>
+<body>
+    <h1> Sitio Web con Django | Ontos</h1>
+    <hr/>
+    <ul>
+        <li>
+            <a href="/inicio">Inicio</a>
+        </li>
+        <li>
+            <a href="/hola_mundo">Hola Mundo</a>
+        </li>
+        <li>
+            <a href="/pagina-pruebas">Página de pruebas</a>
+        </li>
+        <li>
+            <a href="/contacto-dos">Contacto</a>
+        </li>
+    </ul>
+    <hr/>
+    <div id="content">
+        {% block content %}
+            <!-- Código que viene de los templates -->
+        {% endblock %}
+    </div>
+    <hr/>
+    <footer>
+        Master en Python | Udemy
+    </footer>
+</body>
+</html>
