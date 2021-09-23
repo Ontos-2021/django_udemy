@@ -12,7 +12,7 @@ layout = """
         <a href="/inicio">Inicio</a>
     </li>
     <li>
-        <a href="/hola-mundo">Hola Mundo</a>
+        <a href="/hola_mundo">Hola Mundo</a>
     </li>
     <li>
         <a href="/pagina-pruebas">Página de pruebas</a>
@@ -37,14 +37,11 @@ def index(request):
         numero += 1
 
     html += "</ul>"
-    return HttpResponse(layout + html)
+    return render(request, "index.html")
 
 
 def hola_mundo(request):
-    return HttpResponse(layout + """
-    <h1>¡Hola Mundo con Django!</h1>
-    <p>Esta es mi primera vista con Django</p>
-    """)
+    return render(request, "hola_mundo.html")
 
 
 def pagina(request, redirigir=0):
@@ -52,10 +49,8 @@ def pagina(request, redirigir=0):
     if redirigir == 1:
         ##return redirect("/contacto/José/Mercado")
         return redirect("contacto", nombre="José", apellido="Mercado")
-    return HttpResponse(layout + """
-    <h1>Página de mi web</h1>
-    <p>Creado por Ontos</p>
-    """)
+    
+    return render(request, "pagina.html")
 
 
 def contacto(request, nombre="", apellido=""):
