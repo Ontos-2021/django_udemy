@@ -11,32 +11,42 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
 </head>
 <body>
-    <h1> Sitio Web con Django | Ontos</h1>
-    <hr/>
-    <ul>
-        <li>
-            <a href="/inicio">Inicio</a>
-        </li>
-        <li>
-            <a href="/hola_mundo">Hola Mundo</a>
-        </li>
-        <li>
-            <a href="/pagina-pruebas">Página de pruebas</a>
-        </li>
-        <li>
-            <a href="/contacto-dos">Contacto</a>
-        </li>
-    </ul>
-    <hr/>
+
+    <!-- Cabecera de la página-->
+    <header>
+        <div id="logotipo">
+            <!-- Logo Django-->
+            <h1>Sitio web con Django</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="/inicio">Inicio</a>
+            </li>
+            <li>
+                <a href="/hola_mundo">Hola Mundo</a>
+            </li>
+            <li>
+                <a href="/pagina-pruebas">Página de pruebas</a>
+            </li>
+            <li>
+                <a href="/contacto-dos">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+
     <div id="content">
+        <h2 class="title">Título de prueba</h2>
         {% block content %}
             <strong>Contenido por default</strong>
             <!-- Código que viene de los templates -->
         {% endblock %}
     </div>
-    <hr/>
+
     <footer>
         Master en Python | Udemy
     </footer>
+    
 </body>
 </html>
