@@ -81,7 +81,6 @@ nav ul li a:hover {
 .barra{
     width: 1250px;
     margin: 0 auto;
-    margin-bottom: 140px;
 }
 
 .esquina-izquierda {
@@ -104,4 +103,32 @@ nav ul li a:hover {
     height: 10px;
     background-color: #2b2f30;
     float: left;
+}
+
+/* Estilos contenido central */
+
+#content {
+    width: 1212px;
+    min-height: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.box {
+    background: white;
+    width: 95%;
+    min-height: 930px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+.title {
+    color: #444;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 5px;
 }
