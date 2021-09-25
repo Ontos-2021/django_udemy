@@ -6,9 +6,14 @@
     font-family: sans-serif, Arial, Helvetica;
 }
 
-p {
+p, h2, h3, ul {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+ul, ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 body {

@@ -21,6 +21,14 @@
     <strong>El nombre no existe o no coincide</strong>
 {% endif %}
 
+<h3>Lista de lenguajes de programación</h3>
+
+<ul>
+    {% for lenguaje in lenguajes %}
+        <li>{{lenguaje}}</li>
+    {% endfor %}
+</ul>
+
 <p>Números del 1 al 100</p>
 
 {% endblock %}
