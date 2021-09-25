@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %} Inicio {% endblock %}
+{% block title %} {{title}} {% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,10 @@
     <h1> Esto es un comentario </h1>
 {% endcomment %}
 
-<h1 class="title">Inicio</h1>
+<h1 class="title">{{title}}</h1>
+
+{{mi_variable}}
+
 <p>Números del 1 al 100</p>
 
 {% endblock %}

@@ -37,7 +37,10 @@ def index(request):
         numero += 1
 
     html += "</ul>"
-    return render(request, "index.html")
+    return render(request, "index.html", {
+        "title": "Inicio",
+        "mi_variable": "Soy un dato que está en la vista"
+    })
 
 
 def hola_mundo(request):
