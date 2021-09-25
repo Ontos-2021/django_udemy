@@ -12,7 +12,14 @@
 
 <h1 class="title">{{title}}</h1>
 
-{{mi_variable}}
+<p>{{mi_variable}}</p>
+
+
+{% if nombre and nombre == "José Mercado" %}
+    <p>{{nombre}}</p>
+{% else %}
+    <strong>El nombre no existe o no coincide</strong>
+{% endif %}
 
 <p>Números del 1 al 100</p>
 

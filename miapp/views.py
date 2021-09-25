@@ -37,9 +37,13 @@ def index(request):
         numero += 1
 
     html += "</ul>"
+
+    nombre = "José Mercado"
+
     return render(request, "index.html", {
         "title": "Inicio",
-        "mi_variable": "Soy un dato que está en la vista"
+        "mi_variable": "Soy un dato que está en la vista",
+        "nombre": nombre
     })
 
 
