@@ -25,7 +25,9 @@
 
 <ul>
     {% for lenguaje in lenguajes %}
-        <li>{{lenguaje}}</li>
+        <li>{{forloop.counter}}. {{lenguaje}} </li>
+    {% empty %}
+        <P>No hay lenguajes para mostrar</p>
     {% endfor %}
 </ul>
 

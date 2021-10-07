@@ -6,12 +6,12 @@
     font-family: sans-serif, Arial, Helvetica;
 }
 
-p, h2, h3, ul {
+.box p,.box  h2, .box h3, .box ul {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-ul, ol {
+.box ul, .box ol {
     margin-left: 20px;
     margin-bottom: 10px;
 }
