@@ -5,6 +5,18 @@
 {% block content %}
 
 <h1 class="title">Página de mi web</h1>
-<p>Creado por Ontos</p>
+<p>{{ "Creado por Ontos"|cut:"a" }}</p>
+
+<p>{{texto|default:"El texto está vacío"}}</p>
+
+<p>{{lista|join:", "}}</p>
+
+<p>{{lista|random}}</p>
+
+<p>{{"Texto de pruebas"|length}}</p>
+
+<p>{{"Texto de pruebas"|lower}}</p>
+
+<p>{{"<h1>Texto</h1> de <strong>pruebas</strong> hola <p>mundo</p>"|striptags|wordcount}}</p>
 
 {% endblock %}
