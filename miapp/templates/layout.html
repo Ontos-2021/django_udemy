@@ -23,16 +23,16 @@
     <nav>
         <ul>
             <li>
-                <a href="/inicio">Inicio</a>
+                <a href="{% url "inicio" %}">Inicio</a>
             </li>
             <li>
-                <a href="/hola_mundo">Hola Mundo</a>
+                <a href="{% url "hola_mundo" %}">Hola Mundo</a>
             </li>
             <li>
-                <a href="/pagina-pruebas">Página de pruebas</a>
+                <a href="{% url "pagina" %}">Página de pruebas</a>
             </li>
             <li>
-                <a href="/contacto-dos">Contacto</a>
+                <a href="{% url "contacto" "José" "Mercado" %}">Contacto</a>
             </li>
         </ul>
     </nav>
