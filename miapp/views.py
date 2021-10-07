@@ -26,17 +26,24 @@ layout = """
 
 
 def index(request):
-    html = """
+    """
+    html = ""
         <h1>Inicio</h1>
         <p>Números del 1 al 100</p>
         <ul>
-    """
+    ""
     numero = 1
     while numero <= 100:
         html += f"<li>{str(numero)}</li>"
         numero += 1
 
     html += "</ul>"
+
+    """
+
+    year = 2021
+    hasta = range(year, 2051)
+
 
     nombre = "José Mercado"
     lenguajes = ["JavaScript", "Python", "PHP", "C"]
@@ -45,7 +52,8 @@ def index(request):
         "title": "Inicio",
         "mi_variable": "Soy un dato que está en la vista",
         "nombre": nombre,
-        "lenguajes": lenguajes
+        "lenguajes": lenguajes,
+        "years": hasta
     })
 
 

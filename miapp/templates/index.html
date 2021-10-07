@@ -31,6 +31,13 @@
     {% endfor %}
 </ul>
 
-<p>Números del 1 al 100</p>
+<p>Años hasta el 2050</p>
+<ul>
+    {% for year in years %}
+        {% if year|divisibleby:2 == True %}
+            <li>{{ year }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
 
 {% endblock %}
