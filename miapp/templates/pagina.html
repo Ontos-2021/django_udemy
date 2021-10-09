@@ -19,4 +19,7 @@
 
 <p>{{"<h1>Texto</h1> de <strong>pruebas</strong> hola <p>mundo</p>"|striptags|wordcount}}</p>
 
+{% load filters %}
+{{"José Mercado"|saludo|safe}}
+
 {% endblock %}
