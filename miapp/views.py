@@ -1,6 +1,8 @@
 from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
+from django.db.models import Q
+
 # Create your views here.
 # MVC = Modelo Vista Controlador (El controlador hace acciones)
 # MVT = Modelo Templates Vistas -> La vista hace acciones (Métodos)
@@ -134,6 +136,10 @@ def articulos(request):
 
     articulos = Article.objects.raw(
         "SELECT id, title from miapp_article WHERE title='Artículo' AND public=1"
+    )
+
+    articulos = Article.objects.filter(
+        Q(title__contains = "Artículo") | Q(title__contains="Pulento")
     )
 
     return render(request, "articulos.html", {
