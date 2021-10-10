@@ -132,6 +132,10 @@ def articulos(request):
         title__iexact = "Artículo pulento"
     ).exclude(public=True)'''
 
+    articulos = Article.objects.raw(
+        "SELECT id, title from miapp_article WHERE title='Artículo' AND public=1"
+    )
+
     return render(request, "articulos.html", {
         "articulos": articulos
     })
