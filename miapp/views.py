@@ -97,6 +97,21 @@ def crear_articulo(request, title, content, public):
 
     return HttpResponse(f"Artículo creado: <strong>{articulo.title}</strong> - {articulo.content}")
 
+def save_article(request, title, content, public):
+    articulo = Article(
+        title = title,
+        content = content,
+        public = public
+    )
+
+    articulo.save()
+
+    return HttpResponse(f"Artículo creado: <strong>{articulo.title}</strong> - {articulo.content}")
+
+def create_article(request):
+
+    return render(request, "create_article.html")
+
 def articulo(request):
 
     try:
