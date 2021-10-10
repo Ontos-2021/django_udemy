@@ -6,4 +6,21 @@
 
 <h1 class="title">Formularios en Django</h1>
 
+<form action="/save-article" method="GET">
+
+    <label for="tile">Título</label>
+    <input type="text" name="title" placeholder="Intrudúce el título">
+
+    <label for="content">Contenido</label>
+    <textarea name="content"></textarea>
+
+    <label for="public">Publicado</label>
+    <select name="public">
+        <option value="1">Sí</option>
+        <option value="0">No</option>
+    </select>
+
+    <input type="submit" value="Guardar" />
+</form>
+
 {% endblock %}
