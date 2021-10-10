@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
 # Create your views here.
@@ -103,3 +104,15 @@ def articulo(request):
         response = "<h1>Artículo no encontrado</h1>"
 
     return HttpResponse(response)
+
+def editar_articulo(request, id):
+
+    articulo = Article.objects.get(pk=id)
+
+    articulo.title = "Superman"
+    articulo.content = "Película de un chabón que vuela"
+    articulo.public = True
+
+    articulo.save()
+
+    return HttpResponse(f"Artículo {articulo.id} editado: <strong>{articulo.title}</strong> - {articulo.content}")
