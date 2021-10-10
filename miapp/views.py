@@ -119,7 +119,7 @@ def editar_articulo(request, id):
 
 def articulos(request):
 
-    articulos = Article.objects.all()
+    articulos = Article.objects.order_by("id")[0:5]
     
     ## return HttpResponse(articulos)
 
