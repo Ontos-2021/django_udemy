@@ -35,5 +35,6 @@ urlpatterns = [
     path("contacto-dos/", views.contacto, name="contacto"),
     path("contacto-dos/<str:nombre>", views.contacto, name="contacto"),
     path("contacto-dos/<str:nombre>/<str:apellido>", views.contacto, name="contacto"),
-    path("crear-articulo/<str:title>/<str:content>/<str:public>", views.crear_articulo, name="crear_articulo")
+    path("crear-articulo/<str:title>/<str:content>/<str:public>", views.crear_articulo, name="crear_articulo"),
+    path("articulo/", views.articulo, name="articulo")
 ]
