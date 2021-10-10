@@ -120,8 +120,12 @@ def editar_articulo(request, id):
 def articulos(request):
 
     articulos = Article.objects.all()
-    
-    ## return HttpResponse(articulos)
+
+    '''articulos = Article.objects.filter(title__iexact="Artículo")
+    Contains
+    filter.gt (greater than) .lt (less than) .lte (less than or equal)
+    filtar.gte (greater than or equal)
+    return HttpResponse(articulos)'''
 
     return render(request, "articulos.html", {
         "articulos": articulos
