@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} Formularios en Django {% endblock%}
+
+{% block content %}
+
+<h1 class="title">Formularios en Django</h1>
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_ul }}
+
+    <input type="submit" value="Guardar" />
+</form>
+
+{% endblock %}

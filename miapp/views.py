@@ -3,6 +3,7 @@ from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
 from django.db.models import Q
+from miapp.forms import FormArticle
 
 # Create your views here.
 # MVC = Modelo Vista Controlador (El controlador hace acciones)
@@ -127,6 +128,14 @@ def save_article(request):
 def create_article(request):
 
     return render(request, "create_article.html")
+
+def create_full_article(request):
+
+    formulario = FormArticle()
+
+    return render(request, "create_full_article.html", {
+        "form": formulario
+    })
 
 def articulo(request):
 
