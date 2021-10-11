@@ -1,3 +1,4 @@
+from django import http
 from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
@@ -97,16 +98,30 @@ def crear_articulo(request, title, content, public):
 
     return HttpResponse(f"Artículo creado: <strong>{articulo.title}</strong> - {articulo.content}")
 
-def save_article(request, title, content, public):
-    articulo = Article(
-        title = title,
-        content = content,
-        public = public
-    )
+def save_article(request):
 
-    articulo.save()
+    if request.method == 'GET':
+        
+        title = request.GET["title"]
 
-    return HttpResponse(f"Artículo creado: <strong>{articulo.title}</strong> - {articulo.content}")
+        if len(title) <=1:
+            return HttpResponse("<h1>El título es muy pequeño</h1>")
+
+        content = request.GET["content"]
+        public = request.GET["public"]
+
+        articulo = Article(
+            title = title,
+            content = content,
+            public = public
+        )
+
+        articulo.save()
+        return HttpResponse(f"Artículo creado: <strong>{articulo.title}</strong> - {articulo.content}")
+
+    else:
+        return HttpResponse("<h2>No se ha podido crear el artículo</h2>")
+
 
 def create_article(request):
 
@@ -136,8 +151,6 @@ def editar_articulo(request, id):
 
 def articulos(request):
 
-    articulos = Article.objects.all()
-
     '''articulos = Article.objects.filter(title__iexact="Artículo")
     Contains | Si lo contiene o no (Ignora mayúsculas)
     iexact | Es si coincide ignorando mayúsculas
@@ -156,6 +169,8 @@ def articulos(request):
     articulos = Article.objects.filter(
         Q(title__contains = "Artículo") | Q(title__contains="Pulento")
     )
+        
+    articulos = Article.objects.all().order_by("-id")
 
     return render(request, "articulos.html", {
         "articulos": articulos
