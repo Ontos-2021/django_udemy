@@ -17,7 +17,7 @@ layout = """
         <a href="/inicio">Inicio</a>
     </li>
     <li>
-        <a href="/hola_mundo">Hola Mundo</a>
+        <a href="/hola_mundo-django">Hola Mundo</a>
     </li>
     <li>
         <a href="/pagina-pruebas">Página de pruebas</a>
@@ -49,7 +49,6 @@ def index(request):
     year = 2021
     hasta = range(year, 2051)
 
-
     nombre = "José Mercado"
     lenguajes = ["JavaScript", "Python", "PHP", "C"]
 
@@ -67,12 +66,11 @@ def hola_mundo(request):
 
 
 def pagina(request, redirigir=0):
-
     if redirigir == 1:
-        ##return redirect("/contacto/José/Mercado")
+        # return redirect("/contacto/José/Mercado")
         return redirect("contacto", nombre="José", apellido="Mercado")
 
-    return render(request, "pagina.html",{
+    return render(request, "pagina.html", {
         "texto": "Este es mi texto",
         "lista": ["Uno", "Dos", "Tres"]
     })
@@ -88,34 +86,35 @@ def contacto(request, nombre="", apellido=""):
 
     return HttpResponse(layout + "<h2>Contacto</h2>" + html)
 
+
 def crear_articulo(request, title, content, public):
     articulo = Article(
-        title = title,
-        content = content,
-        public = public
+        title=title,
+        content=content,
+        public=public
     )
 
     articulo.save()
 
     return HttpResponse(f"Artículo creado: <strong>{articulo.title}</strong> - {articulo.content}")
 
-def save_article(request):
 
+def save_article(request):
     if request.method == 'POST':
-        
+
         title = request.POST["title"]
         print(title)
 
-        if len(title) <=1:
+        if len(title) <= 1:
             return HttpResponse("<h1>El título es muy pequeño</h1>")
 
         content = request.POST["content"]
         public = request.POST["public"]
 
         articulo = Article(
-            title = title,
-            content = content,
-            public = public
+            title=title,
+            content=content,
+            public=public
         )
 
         articulo.save()
@@ -126,17 +125,15 @@ def save_article(request):
 
 
 def create_article(request):
-
     return render(request, "create_article.html")
 
-def create_full_article(request):
 
+def create_full_article(request):
     if request.method == "POST":
 
         formulario = FormArticle(request.POST)
 
         if formulario.is_valid():
-
             data_form = formulario.cleaned_data
 
             title = data_form.get("title")
@@ -144,36 +141,36 @@ def create_full_article(request):
             public = data_form["public"]
 
             articulo = Article(
-                title = title,
-                content = content,
-                public = public
+                title=title,
+                content=content,
+                public=public
             )
 
             articulo.save()
 
             return redirect("articulos")
-            ## return HttpResponse(articulo.title + " - " + articulo.content + " - " + str(articulo.public))
+            # return HttpResponse(articulo.title + " - " + articulo.content + " - " + str(articulo.public))
 
     else:
-        
+
         formulario = FormArticle()
 
     return render(request, "create_full_article.html", {
         "form": formulario
     })
 
-def articulo(request):
 
+def articulo(request):
     try:
         articulo = Article.objects.get(title="Segundo Artículo", public=True)
-        response = (f"Artículo: {articulo.id}. </br>{articulo.title}")
+        response = f"Artículo: {articulo.id}. </br>{articulo.title}"
     except:
         response = "<h1>Artículo no encontrado</h1>"
 
     return HttpResponse(response)
 
-def editar_articulo(request, id):
 
+def editar_articulo(request, id):
     articulo = Article.objects.get(pk=id)
 
     articulo.title = "Superman"
@@ -184,9 +181,9 @@ def editar_articulo(request, id):
 
     return HttpResponse(f"Artículo {articulo.id} editado: <strong>{articulo.title}</strong> - {articulo.content}")
 
-def articulos(request):
 
-    '''articulos = Article.objects.filter(title__iexact="Artículo")
+def articulos(request):
+    """articulos = Article.objects.filter(title__iexact="Artículo")
     Contains | Si lo contiene o no (Ignora mayúsculas)
     iexact | Es si coincide ignorando mayúsculas
     filter.gt (greater than) .lt (less than) .lte (less than or equal)
@@ -195,24 +192,24 @@ def articulos(request):
 
     articulos = Article.objects.filter(
         title__iexact = "Artículo pulento"
-    ).exclude(public=True)'''
+    ).exclude(public=True)"""
 
     articulos = Article.objects.raw(
         "SELECT id, title from miapp_article WHERE title='Artículo' AND public=1"
     )
 
     articulos = Article.objects.filter(
-        Q(title__contains = "Artículo") | Q(title__contains="Pulento")
+        Q(title__contains="Artículo") | Q(title__contains="Pulento")
     )
-        
+
     articulos = Article.objects.all().order_by("-id")
 
     return render(request, "articulos.html", {
         "articulos": articulos
     })
 
-def borrar_articulo(request, id):
 
+def borrar_articulo(request, id):
     articulo = Article.objects.get(pk=id)
     articulo.delete()
 
